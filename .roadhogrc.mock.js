@@ -1,6 +1,6 @@
 import _ from 'lodash';
 let idIncrease;
-const baseLength = {
+const customerStructure = {
   id: '',
   phone: '',
   name: '',
@@ -9,7 +9,7 @@ const baseLength = {
 const customerList = [];
 
 for (idIncrease = 1; idIncrease < 6; idIncrease++) {
-  const customer = Object.assign({}, baseLength, {
+  const customer = Object.assign({}, customerStructure, {
     id: idIncrease,
   });
   if (idIncrease % 2) {
@@ -34,7 +34,7 @@ export default {
     },
   },
 
-  // GET 可省略
+  // GET
   'GET /api/customer/:id': (req, res) => {
     if (req.params && req.params.id && 1 * req.params.id && _.find(customerList, {
       id: 1 * req.params.id,
@@ -51,13 +51,37 @@ export default {
     }
   },
 
+  // PUT
+  'PUT /api/customer/:id': (req, res) => {
+    if (req.params && req.params.id && 1 * req.params.id && _.find(customerList, {
+      id: 1 * req.params.id,
+    })) {
+      const customer = _.find(customerList, {
+        id: 1 * req.params.id,
+      });
+      for (const [k] of Object.entries(customerStructure)) {
+        if (k in req.body) {
+          customer[k] = req.body[k];
+        }
+      }
+      res.send({
+        data: customer,
+        ok: true,
+      });
+      res.end("OK");
+    }
+    else {
+      res.status(404).end();
+    }
+  },
+
   // 新建
   'POST /api/customer': (req, res) => {
     console.log(req.body);
     const body = req.body || {};
     const name = _.get(body, 'name') || '';
     const phone = _.get(body, 'phone') || '';
-    const customer = Object.assign({}, baseLength, {
+    const customer = Object.assign({}, customerStructure, {
       id: idIncrease,
       name,
       phone,
