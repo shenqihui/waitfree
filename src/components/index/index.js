@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'dva';
+import { Link } from 'dva/router';
 import styles from './index.less';
+import Header from '../../atom_components/header';
 
 class Component extends React.Component {
 
@@ -15,8 +17,12 @@ class Component extends React.Component {
   render() {
     const { customerState } = this.props;
     return (<div className={styles.normal}>
+      <Header>
+        WaitFree
+      </Header>
       <div>
         Welcome
+        <Link to="/size">Next</Link>
       </div>
       <div>
         { JSON.stringify(customerState) }
