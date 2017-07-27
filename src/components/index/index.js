@@ -4,6 +4,14 @@ import styles from './index.less';
 
 class Component extends React.Component {
 
+  componentDidMount = () => {
+    const { dispatch } = this.props;
+    dispatch({
+      type: 'customer/list',
+      payload: { },
+    });
+  }
+
   render() {
     const { customerState } = this.props;
     return (<div className={styles.normal}>
