@@ -4,6 +4,7 @@ import { connect } from 'dva';
 import { Link } from 'dva/router';
 import styles from './index.less';
 import Header from '../../atom_components/header';
+import Counter from '../../atom_components/counter';
 
 class Component extends React.Component {
   render() {
@@ -19,6 +20,9 @@ class Component extends React.Component {
         Size
         <Icon type={require('../../svg/back.svg')} />
         <Link to="/info">Next</Link>
+
+        <hr />
+        <Counter label="数量一" type="number" min="0" />
       </div>
     </div>);
   }
