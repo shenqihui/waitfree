@@ -5,6 +5,7 @@ import { Link } from 'dva/router';
 import styles from './index.less';
 import Header from '../../atom_components/header';
 import Counter from '../../atom_components/counter';
+import NumberKeyboard from '../../atom_components/number_keyboard';
 
 class Component extends React.Component {
   render() {
@@ -18,10 +19,23 @@ class Component extends React.Component {
       </Header>
       <br />
       <br />
-      <div>
+      <NumberKeyboard />
+      <br />
+      <br />
+      <br />
+      <div style={{ display: 'none' }}>
         <Counter label="数量一" type="number" min="0" />
+        <br />
+        <br />
+        <br />
         <Counter label="数量一" type="number" min="0" />
+        <br />
+        <br />
+        <br />
         <Counter label="数量二" type="number" min="0" />
+        <br />
+        <br />
+        <br />
         <Counter label="数量三" type="number" min="0" />
       </div>
       <br />
