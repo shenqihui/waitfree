@@ -1,7 +1,6 @@
-// 浮点处理没做。
-
 import React from 'react';
-import { Icon, InputItem } from 'antd-mobile';
+import _ from 'lodash';
+import { Icon } from 'antd-mobile';
 
 import styles from './index.less';
 
@@ -23,15 +22,26 @@ class Component extends React.Component {
     }
   }
 
+  onInput = (e) => {
+    const value = _.get(e, 'target.value') || '';
+    const numberValue = value.replace(/[^\d]*/g, '');
+    this.onChange(numberValue);
+  }
+
   onChange = (value) => {
+    const formatValue = value * 1 || 0;
+    this.setState({
+      value: formatValue,
+    });
     const { onChange } = this.props;
     if ('function' === typeof onChange) {
-      onChange(value);
+      onChange(formatValue);
     }
   }
 
   decrease = () => {
     let value = 1 * this.state.value || 0;
+    // 浮点处理没做。
     value -= this.props.step * 1 || 1;
     if ('min' in this.props) {
       const min = this.props.min * 1 || 0;
@@ -39,14 +49,12 @@ class Component extends React.Component {
         value = min;
       }
     }
-    this.setState({
-      value,
-    });
     this.onChange(value);
   }
 
   increase = () => {
     let value = 1 * this.state.value || 0;
+    // 浮点处理没做。
     value += this.props.step * 1 || 1;
     if ('max' in this.props) {
       const max = this.props.max * 1 || 0;
@@ -77,10 +85,12 @@ class Component extends React.Component {
             <Icon type={require('../../svg/decrease.svg')} />
           </div>
           <div className={styles.counterNum}>
-            <InputItem
+            <input
+              type="text"
+              pattern="[0-9]*"
               value={this.state.value}
-              type={this.props.type || 'money'}
-              placeholder="money format"
+              placeholder="Please Inupt"
+              onChange={this.onInput}
             />
           </div>
           <div className={styles.counterOperate} onClick={this.increase}>
