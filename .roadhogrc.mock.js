@@ -4,6 +4,7 @@ const customerStructure = {
   id: '',
   phone: '',
   name: '',
+  size: 0,
 };
 
 const customerList = [];
@@ -12,6 +13,7 @@ for (idIncrease = 1; idIncrease < 6; idIncrease++) {
   const customer = Object.assign({}, customerStructure, {
     id: idIncrease,
   });
+  customer.size = parseInt(Math.random() * 8, 10);
   if (idIncrease % 2) {
     customer.phone = 13800138000 + idIncrease;
   }
@@ -81,10 +83,14 @@ export default {
     const body = req.body || {};
     const name = _.get(body, 'name') || '';
     const phone = _.get(body, 'phone') || '';
+    const size = _.get(body, 'size') || '';
+    const sizeInfo = _.get(body, 'sizeInfo') || '';
     const customer = Object.assign({}, customerStructure, {
       id: idIncrease,
       name,
       phone,
+      size,
+      sizeInfo,
     });
     customerList.push(customer);
     idIncrease ++;

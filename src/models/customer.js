@@ -14,10 +14,11 @@ export default {
     *list(payloads, { call, put }) {
       try {
         const data = yield call(Service.list, {});
+        window.console.log('list data', data);
         yield put({
           type: 'saveList',
           payload: {
-            data: data.data.data,
+            data: data.data.data.data,
           },
         });
       }
