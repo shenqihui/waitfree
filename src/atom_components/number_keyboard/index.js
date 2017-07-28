@@ -87,7 +87,7 @@ class Component extends React.Component {
             <tbody>
               {
                 _.range(0, 4).map((row) => {
-                  return (<tr key={`row_${row}`}>
+                  return (<tr className={styles.keyboardRow} key={`row_${row}`}>
                     {
                       _.range(0, 3).map((col) => {
                         const value = ((row * 3) + col + 1) % 10;
@@ -95,12 +95,12 @@ class Component extends React.Component {
                           return null;
                         }
                         else if (3 === row && 1 === col) {
-                          return (<td onClick={this.onDelete} key={`row_${row}_col_${col}`} colSpan={2}>
+                          return (<td className={`${styles.keyboardCol} ${styles.keyboardDelete}`} onClick={this.onDelete} key={`row_${row}_col_${col}`} colSpan={2}>
                             DELETE
                           </td>);
                         }
                         else {
-                          return (<td key={`row_${row}_col_${col}`} onClick={this.onInput.bind(this, value)}>
+                          return (<td className={styles.keyboardCol} key={`row_${row}_col_${col}`} onClick={this.onInput.bind(this, value)}>
                             { value }
                           </td>);
                         }

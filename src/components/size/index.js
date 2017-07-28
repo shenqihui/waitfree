@@ -19,11 +19,13 @@ class Component extends React.Component {
       </Header>
       <br />
       <br />
-      <NumberKeyboard />
+      <div style={{ width: 400, margin: '0 auto' }}>
+        <NumberKeyboard />
+      </div>
       <br />
       <br />
       <br />
-      <div style={{ display: 'none' }}>
+      <div data-bak-style={{ display: 'none' }}>
         <Counter label="数量一" type="number" min="0" />
         <br />
         <br />
