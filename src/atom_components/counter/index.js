@@ -15,6 +15,14 @@ class Component extends React.Component {
 
   componentWillMount = () => {}
 
+  componentWillReceiveProps(nextProps) {
+    if ('value' in nextProps) {
+      this.setState({
+        value: nextProps.value * 1 || 0,
+      });
+    }
+  }
+
   onChange = (value) => {
     const { onChange } = this.props;
     if ('function' === typeof onChange) {
@@ -65,10 +73,8 @@ class Component extends React.Component {
           { labelElem }
         </div>
         <div className={styles.counter}>
-          <div className={styles.counterOperate}>
-            <span onClick={this.decrease}>
-              <Icon type={require('../../svg/decrease.svg')} />
-            </span>
+          <div className={styles.counterOperate} onClick={this.decrease}>
+            <Icon type={require('../../svg/decrease.svg')} />
           </div>
           <div className={styles.counterNum}>
             <InputItem
@@ -77,10 +83,8 @@ class Component extends React.Component {
               placeholder="money format"
             />
           </div>
-          <div className={styles.counterOperate}>
-            <span onClick={this.increase}>
-              <Icon type={require('../../svg/increase.svg')} />
-            </span>
+          <div className={styles.counterOperate} onClick={this.increase}>
+            <Icon type={require('../../svg/increase.svg')} />
           </div>
         </div>
       </div>

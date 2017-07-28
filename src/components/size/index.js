@@ -9,21 +9,23 @@ import Counter from '../../atom_components/counter';
 class Component extends React.Component {
   render() {
     const left = (<Link to="/" onClick={this.handleShow}>
-      Back
+      <Icon type={require('../../svg/back.svg')} />
     </Link>);
     const right = (<button>next</button>);
     return (<div className={styles.normal}>
       <Header left={left} right={right}>
         WaitFree
       </Header>
+      <br />
+      <br />
       <div>
-        Size
-        <Icon type={require('../../svg/back.svg')} />
-        <Link to="/info">Next</Link>
-
-        <hr />
         <Counter label="数量一" type="number" min="0" />
+        <Counter label="数量一" type="number" min="0" />
+        <Counter label="数量二" type="number" min="0" />
+        <Counter label="数量三" type="number" min="0" />
       </div>
+      <br />
+      <br />
     </div>);
   }
 }
