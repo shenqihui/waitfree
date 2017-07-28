@@ -6,6 +6,7 @@ import styles from './index.less';
 import Header from '../../atom_components/header';
 import Counter from '../../atom_components/counter';
 import NumberKeyboard from '../../atom_components/number_keyboard';
+import PhoneKeyboard from '../../atom_components/phone_keyboard';
 
 class Component extends React.Component {
   render() {
@@ -17,6 +18,12 @@ class Component extends React.Component {
       <Header left={left} right={right}>
         WaitFree
       </Header>
+      <br />
+      <br />
+      <div style={{ width: 400, margin: '0 auto' }}>
+        <PhoneKeyboard />
+      </div>
+      <br />
       <br />
       <br />
       <div style={{ width: 400, margin: '0 auto' }}>

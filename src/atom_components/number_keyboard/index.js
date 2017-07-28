@@ -45,35 +45,6 @@ class Component extends React.Component {
     }
   }
 
-  decrease = () => {
-    let value = 1 * this.state.value || 0;
-    // 浮点处理没做。
-    value -= this.props.step * 1 || 1;
-    if ('min' in this.props) {
-      const min = this.props.min * 1 || 0;
-      if (min > value) {
-        value = min;
-      }
-    }
-    this.onChange(value);
-  }
-
-  increase = () => {
-    let value = 1 * this.state.value || 0;
-    // 浮点处理没做。
-    value += this.props.step * 1 || 1;
-    if ('max' in this.props) {
-      const max = this.props.max * 1 || 0;
-      if (max < value) {
-        value = max;
-      }
-    }
-    this.setState({
-      value,
-    });
-    this.onChange(value);
-  }
-
   render() {
     const { className } = this.props;
 
