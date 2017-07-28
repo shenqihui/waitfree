@@ -27,7 +27,7 @@ class Component extends React.Component {
 
   render() {
     const left = (<Link to="/size" onClick={this.handleShow}>Back</Link>);
-    const right = (<button onClick={this.handleShow}>next</button>);
+    const right = (<button onClick={this.handleShow}>Done</button>);
     return (<div className={styles.normal}>
       <Header left={left} right={right}>
         WaitFree
