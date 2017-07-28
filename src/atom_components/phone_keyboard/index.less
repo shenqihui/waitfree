@@ -103,6 +103,11 @@
   border-radius: 50%;
   border: 3px solid @mainColor;
   box-sizing: content-box;
+  outline: none;
+  &:active {
+    color: darken(@mainColor, 10%);
+    border-color: darken(@mainColor, 10%);
+  }
 }
 
 .keyboardDeleteIcon {
