@@ -46,6 +46,15 @@ class Component extends React.Component {
         <br />
         <br />
         <Counter label="数量三" type="number" min="0" />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
       </div>
       <br />
       <br />
