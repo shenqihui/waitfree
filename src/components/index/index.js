@@ -35,7 +35,7 @@ class Component extends React.Component {
           </div>
         </div>
         <div className={styles.right}>
-          <div className={styles.troops}>
+          <div className={styles.troopsHeader}>
             <table>
               <thead>
                 <tr>
@@ -44,6 +44,10 @@ class Component extends React.Component {
                   <td>Group Size</td>
                 </tr>
               </thead>
+            </table>
+          </div>
+          <div className={styles.troops}>
+            <table>
               <tbody>
                 {
                   customerState.list.map((elem, index) => {
