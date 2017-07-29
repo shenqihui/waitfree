@@ -96,6 +96,7 @@ export default {
     idIncrease ++;
     res.send({
       ok: true,
+      length: customerList.length,
       data: customer,
     });
     res.end('OK');

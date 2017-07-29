@@ -11,15 +11,16 @@ class Component extends React.Component {
   }
 
   render() {
-    if (!this.props.visible) {
-      return null;
-    }
+    const { size = 0, id = 0, length = 0, url = 'w8fr.com/t/6c3abe' } = this.props;
 
     return (<div className={styles.normal}>
-      <div className={styles.shade} onClick={this.handleClose}>遮罩层</div>
-      <div>
-        Finish
-        <button onClick={this.handleClose}>Done</button>
+      <div className={styles.shade} onClick={this.handleClose} />
+      <div className={styles.desc}>
+        <div>Welcome to Facing East! Your Party of {size}<span className="text-main">(Assigned No.#{id})</span> is #{length} in the line. Go to {url} to check line status or update your info.
+        </div>
+        <div className={`${styles.buttonLine}`}>
+          <div className="button full" onClick={this.handleClose}>Done</div>
+        </div>
       </div>
     </div>);
   }

@@ -5,6 +5,7 @@ import { connect } from 'dva';
 import { Link } from 'dva/router';
 import styles from './index.less';
 import Header from '../../atom_components/header';
+import Finish from '../../atom_components/finish';
 import PhoneKeyboard from '../../atom_components/phone_keyboard';
 import * as Service from '../../services/customer';
 
@@ -45,6 +46,8 @@ class Component extends React.Component {
       // mode: 'name',
       submitting: false,
       submittingSuccess: false,
+      res: {},
+      // submittingSuccess: true,
     };
   }
 
@@ -64,6 +67,7 @@ class Component extends React.Component {
       this.setState({
         submittingSuccess: true,
         submitting: false,
+        res,
       });
     })
     .catch((rej) => {
@@ -77,11 +81,28 @@ class Component extends React.Component {
     });
   }
 
+  handleClose = () => {
+    const { history } = this.props;
+    history.push('/');
+  }
+
   render() {
-    const { mode, name, phone } = this.state;
-    const left = (<Link className="button" to="/size">
+    const { mode, name, phone, submittingSuccess, res } = this.state;
+    const size = _.get(res, 'data.data.size') || 0;
+    const id = _.get(res, 'data.data.id') || 0;
+    const length = _.get(res, 'data.length') || 0;
+    const url = _.get(res, 'data.url') || 'w8fr.com/t/6c3abe';
+    const left = (<div
+      className="button"
+      onClick={() => {
+        this.setState({
+          mode: 'phone',
+          name: '',
+        });
+      }}
+    >
       <Icon type={require('../../svg/back.svg')} />
-    </Link>);
+    </div>);
     const right = (<div className="button ghost" onClick={this.submit}>
       Done
     </div>);
@@ -132,10 +153,11 @@ class Component extends React.Component {
         'name' !== mode ? null : (<div className={styles.userNameInputContainer}>
           <div className={styles.nameInput}>
             <div className={styles.nameInputIcon}>
-              <Icon type={require('../../svg/user.svg')} />
+              <Icon className="text-main" type={require('../../svg/user.svg')} />
             </div>
             <div className={styles.nameInputInput}>
               <input
+                placeholder="Your Name"
                 value={name}
                 onChange={(e) => {
                   const value = _.get(e, 'target.value') || '';
@@ -147,6 +169,10 @@ class Component extends React.Component {
             </div>
           </div>
         </div>)
+      }
+
+      {
+        !submittingSuccess ? null : (<Finish size={size} id={id} length={length} url={url} handleClose={this.handleClose} />)
       }
     </div>);
   }

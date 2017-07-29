@@ -1,5 +1,52 @@
 
 .normal {
-  margin-top: 3em;
+  font-weight: 900;
+  position: relative;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+.shade {
+  position: fixed;
+  z-index: 10;
+  background-color: #000000;
+  background-color: rgba(0, 0, 0, .2);
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+}
+
+.desc {
+  @width: 504px;
+  @height: 378px;
+  text-align: left;
+  width: @width;
+  height: @height;
+  box-sizing: border-box;
+  padding: 40px 33px 30px;
+  position: absolute;
+  margin-left: -@width / 2;
+  margin-top: -@height / 2;
+  background: white;
+  z-index: 11;
+  border-radius: 5px;
+  top: 50%;
+  left: 50%;
+  font-size: 34px;
+  line-height: 44px;
+}
+
+.buttonLine {
   text-align: center;
+  margin-top: 20px;
+  :global {
+    .button {
+      width: 288px;
+    }
+  }
 }
