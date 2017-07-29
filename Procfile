@@ -1,1 +1,1 @@
-web: roadhog server
+web: PORT=$PORT roadhog server
