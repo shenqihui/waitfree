@@ -39,7 +39,7 @@ class Component extends React.Component {
     }
     this.state = {
       name: '',
-      phone: '125-4563-8579',
+      phone: '',
       size,
       sizeInfo,
       mode: 'phone',
