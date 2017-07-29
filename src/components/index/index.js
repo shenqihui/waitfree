@@ -29,7 +29,7 @@ class Component extends React.Component {
             <p>
               Welcome to Looking For Chai! Please take a ticket by clicking the START below. We will try to serve you as soon as possible. THANK YOU!
             </p>
-            <div className={styles.start}>
+            <div className={`${styles.start} button`}>
               <Link to="/size">Start</Link>
             </div>
           </div>

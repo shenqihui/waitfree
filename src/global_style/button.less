@@ -1,0 +1,28 @@
+@mailColor: #3cd0a8;
+
+:global {
+  .button {
+    display: inline-block;
+    border: 3px solid @mailColor;
+    border-radius: 5px;
+    width: 130px;
+    box-sizing: border-box;
+    text-align: center;
+    padding: 10px 0px;
+    .am-icon-md {
+      display: block;
+      margin: 0 auto;
+    }
+    &, a {
+      color: @mailColor;
+      text-decoration: none;
+      font-size: 34px;
+      line-height: 44px;
+    }
+    &.ghost {
+      &, a {
+        color: #ffffff;
+      }
+    }
+  }
+}

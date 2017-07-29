@@ -8,7 +8,7 @@ class Component extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: '',
+      value: props.value || '',
     };
   }
 
@@ -17,7 +17,7 @@ class Component extends React.Component {
   componentWillReceiveProps(nextProps) {
     if ('value' in nextProps) {
       this.setState({
-        value: nextProps.value * 1 || 0,
+        value: nextProps.value,
       });
     }
   }
@@ -68,7 +68,7 @@ class Component extends React.Component {
     const { className } = this.props;
 
     return (
-      <div className={`${styles.normal} ${className || ''}`}>
+      <div className={`phone_keyboard ${styles.normal} ${className || ''}`}>
         <div className={styles.inputResult}>
           <div className={styles.inputPhoneIcon}>
             <Icon type={require('../../svg/phone.svg')} />

@@ -1,4 +1,5 @@
 import fetch from 'dva/fetch';
+import _ from 'lodash';
 
 function parseJSON(response) {
   return response.json();
@@ -21,8 +22,16 @@ function checkStatus(response) {
  * @param  {object} [options] The options we want to pass to "fetch"
  * @return {object}           An object containing either "data" or "err"
  */
-export default function request(url, options) {
-  return fetch(url, options)
+export default function request(url, options = {}) {
+  const newOptions = {
+    ...options,
+    headers: {
+      ...options.headers || {},
+      'Content-Type': _.get(options.headers, 'Content-Type') || 'application/json; charset=utf-8',
+    },
+  };
+
+  return fetch(url, newOptions)
     .then(checkStatus)
     .then(parseJSON)
     .then(data => ({ data }))

@@ -8,7 +8,7 @@ class Component extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: 0,
+      value: props.value || 0,
     };
   }
 
@@ -76,7 +76,7 @@ class Component extends React.Component {
     }
 
     return (
-      <div className={`${styles.normal} ${className || ''}`}>
+      <div className={`counter ${styles.normal} ${className || ''}`}>
         <div className={styles.label}>
           { labelElem }
         </div>
