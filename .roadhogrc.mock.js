@@ -54,6 +54,25 @@ export default {
   },
 
   // PUT
+  'DELETE /api/customer/:id': (req, res) => {
+    if (req.params && req.params.id && 1 * req.params.id && _.find(customerList, {
+      id: 1 * req.params.id,
+    })) {
+      const customer = _.remove(customerList, {
+        id: 1 * req.params.id,
+      });
+      res.send({
+        data: customer,
+        ok: true,
+      });
+      res.end("OK");
+    }
+    else {
+      res.status(404).end();
+    }
+  },
+
+  // PUT
   'PUT /api/customer/:id': (req, res) => {
     if (req.params && req.params.id && 1 * req.params.id && _.find(customerList, {
       id: 1 * req.params.id,
