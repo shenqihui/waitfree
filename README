@@ -3,7 +3,7 @@ WaitFree
 
 # How to run
 
-- make sure your nade engine version > 6.9.2
+- make sure your node engine version > 6.9.2
 - clone
 - install dependencies
 - yarn start
