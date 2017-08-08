@@ -7,6 +7,7 @@ const svgSpriteDirs = [
 
 export default {
   entry: 'src/index.js',
+  hash: true,
   svgSpriteLoaderDirs: svgSpriteDirs,
   extraBabelPlugins: [
     'transform-runtime',
